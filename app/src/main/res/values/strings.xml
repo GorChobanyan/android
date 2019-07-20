@@ -1,0 +1,57 @@
+<resources>
+    <string name="app_name">Wallpapers Application</string>
+    <string name="categories_title">Categories</string>
+    <string name="preview">Preview</string>
+    <string name="set_as">Set as</string>
+    <string name="favorites_title">Favorites</string>
+    <string name="downloads_title">Downloads</string>
+
+    <string name="default_error_message">Error</string>
+    <string name="timeout_error_message">Timeout</string>
+    <string name="no_connection_error_message">There is no internet connection. Please, try again later.</string>
+    <string name="ok">OK</string>
+
+    // category strings
+    <string name="category_title_space">Space</string>
+    <string name="category_title_sport">Sport</string>
+    <string name="category_title_nature">Nature</string>
+    <string name="category_title_music">Music</string>
+    <string name="category_title_macro">Macro</string>
+    <string name="category_title_love">Love</string>
+    <string name="category_title_food">Food</string>
+    <string name="category_title_flowers">Flowers</string>
+    <string name="category_title_city">City</string>
+    <string name="category_title_cars">Cars</string>
+    <string name="category_title_birds">Birds</string>
+    <string name="category_title_bike">Bike</string>
+    <string name="category_title_baby">Baby</string>
+    <string name="category_title_art">Art</string>
+    <string name="category_title_anime">Anime</string>
+    <string name="category_title_animals">Animals</string>
+    <string name="category_title_3d">3D</string>
+    <string name="category_title_abstract">Abstract</string>
+    <string name="category_title_vector">Vector</string>
+    <string name="category_title_celebrities">Celebrities</string>
+
+    <string name="category_url_start_space">Space</string>
+    <string name="category_url_start_sport">Sport</string>
+    <string name="category_url_start_nature">Nature</string>
+    <string name="category_url_start_music">Music</string>
+    <string name="category_url_start_macro">Macro</string>
+    <string name="category_url_start_love">Love</string>
+    <string name="category_url_start_food">Food</string>
+    <string name="category_url_start_flowers">Flowers</string>
+    <string name="category_url_start_city">City</string>
+    <string name="category_url_start_cars">Cars</string>
+    <string name="category_url_start_birds">Birds</string>
+    <string name="category_url_start_bike">Bike</string>
+    <string name="category_url_start_baby">Baby</string>
+    <string name="category_url_start_art">Art</string>
+    <string name="category_url_start_anime">Anime</string>
+    <string name="category_url_start_animal">Animal</string>
+    <string name="category_url_start_3d">3d</string>
+    <string name="category_url_start_abstract">Abstract</string>
+    <string name="category_url_start_vector">Vector</string>
+    <string name="category_url_start_celebrities">Celebrities</string>
+    <string name="no_images">Empty</string>
+</resources>

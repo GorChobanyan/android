@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="category_titles">
+        <item>@string/category_title_space</item>
+        <item>@string/category_title_sport</item>
+        <item>@string/category_title_nature</item>
+        <item>@string/category_title_music</item>
+        <item>@string/category_title_macro</item>
+        <item>@string/category_title_love</item>
+        <item>@string/category_title_food</item>
+        <item>@string/category_title_flowers</item>
+        <item>@string/category_title_city</item>
+        <item>@string/category_title_cars</item>
+        <item>@string/category_title_birds</item>
+        <item>@string/category_title_bike</item>
+        <item>@string/category_title_baby</item>
+        <item>@string/category_title_art</item>
+        <item>@string/category_title_anime</item>
+        <item>@string/category_title_animals</item>
+        <item>@string/category_title_3d</item>
+        <item>@string/category_title_abstract</item>
+        <item>@string/category_title_vector</item>
+        <item>@string/category_title_celebrities</item>
+    </string-array>
+
+    <string-array name="category_url_start">
+        <item>@string/category_url_start_space</item>
+        <item>@string/category_url_start_sport</item>
+        <item>@string/category_url_start_nature</item>
+        <item>@string/category_url_start_music</item>
+        <item>@string/category_url_start_macro</item>
+        <item>@string/category_url_start_love</item>
+        <item>@string/category_url_start_food</item>
+        <item>@string/category_url_start_flowers</item>
+        <item>@string/category_url_start_city</item>
+        <item>@string/category_url_start_cars</item>
+        <item>@string/category_url_start_birds</item>
+        <item>@string/category_url_start_bike</item>
+        <item>@string/category_url_start_baby</item>
+        <item>@string/category_url_start_art</item>
+        <item>@string/category_url_start_anime</item>
+        <item>@string/category_url_start_animal</item>
+        <item>@string/category_url_start_3d</item>
+        <item>@string/category_url_start_abstract</item>
+        <item>@string/category_url_start_vector</item>
+        <item>@string/category_url_start_celebrities</item>
+    </string-array>
+
+</resources>
