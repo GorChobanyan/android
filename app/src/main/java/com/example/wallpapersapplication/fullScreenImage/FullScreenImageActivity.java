@@ -140,9 +140,7 @@ public class FullScreenImageActivity extends BaseActivity {
         });
 
         setImage.setOnClickListener(v -> {
-            showLoadingDialog();
             Utils.setWallpaper(bitmap, this);
-            dismissLoadingDialog();
             finish();
         });
 

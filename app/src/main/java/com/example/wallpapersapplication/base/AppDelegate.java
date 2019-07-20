@@ -2,7 +2,6 @@ package com.example.wallpapersapplication.base;
 
 import android.app.Application;
 
-import com.example.wallpapersapplication.base.DataRepository;
 import com.example.wallpapersapplication.database.AppDatabase;
 import com.example.wallpapersapplication.database.DatabaseDao;
 

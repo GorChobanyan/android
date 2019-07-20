@@ -57,9 +57,9 @@ public class DataRepository {
         return databaseDao.getImagesByCategory(categoryTitle);
     }
 
-    public void updateImages(ArrayList<Image> images) {
+    public void insertImages(ArrayList<Image> images) {
         appExecutors.diskIO().execute(() -> {
-            databaseDao.updateImages(images.toArray(new Image[0]));
+            databaseDao.insertImages(images.toArray(new Image[0]));
         });
     }
 
@@ -93,6 +93,10 @@ public class DataRepository {
         return databaseDao.getAllImages();
     }
 
+    public List<Image> getImages() {
+        return databaseDao.getImages();
+    }
+
     /**
      * Get up to date downloaded image list
      *
@@ -103,7 +107,7 @@ public class DataRepository {
     public ArrayList<Pair<Image, Bitmap>> getDownloadedImages(String albumName, List<Image> images) {
         Pair<ArrayList<Pair<Image, Bitmap>>, ArrayList<Image>> pair = Utils.getImages(albumName, images);
         appExecutors.diskIO().execute(() -> {
-            databaseDao.updateImages(pair.second);
+            databaseDao.insertImages(pair.second);
         });
 
         return pair.first;

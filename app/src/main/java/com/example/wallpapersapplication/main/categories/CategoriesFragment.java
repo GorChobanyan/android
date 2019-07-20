@@ -18,7 +18,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.wallpapersapplication.R;
-import com.example.wallpapersapplication.Utils;
 import com.example.wallpapersapplication.base.BaseActivity;
 import com.example.wallpapersapplication.main.downloadFavorite.DownloadFavoritesFragment;
 import com.example.wallpapersapplication.main.imageList.ImageListFragment;
@@ -56,30 +55,8 @@ public class CategoriesFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         initViews(view);
         bindModelData();
-        saveImageUrls();
         initUI();
         setListeners();
-    }
-
-    private void saveImageUrls() {
-        ArrayList<String> categoryTitles = new ArrayList<>(Arrays.asList(
-                getResources().getStringArray(R.array.category_url_start)));
-        model.getImageUrls(categoryTitles).observe(this, imageUrlResponseResource -> {
-            switch (imageUrlResponseResource.status) {
-                case SUCCESS:
-                    if (imageUrlResponseResource.data != null) {
-                        model.updateImages(imageUrlResponseResource.data);
-                    }
-                    break;
-                case ERROR:
-                    if (imageUrlResponseResource.message != null) {
-                        ((BaseActivity) getActivity()).showErrorDialog(imageUrlResponseResource.message);
-                    } else {
-                        ((BaseActivity) getActivity()).showErrorDialog();
-                    }
-                    break;
-            }
-        });
     }
 
     private void initViews(View view) {

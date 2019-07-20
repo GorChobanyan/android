@@ -2,6 +2,7 @@ package com.example.wallpapersapplication.database;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
@@ -22,8 +23,11 @@ public interface DatabaseDao {
     @Query("SELECT * FROM " + Image.TABLE_NAME)
     LiveData<List<Image>> getAllImages();
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void updateImages(Image... images);
+    @Query("SELECT * FROM " + Image.TABLE_NAME)
+    List<Image> getImages();
+
+    @Insert
+    void insertImages(Image... images);
 
     @Query("SELECT * FROM " + Image.TABLE_NAME + " WHERE _id = :imageId")
     LiveData<Image> getSingleImage(int imageId);
@@ -35,5 +39,5 @@ public interface DatabaseDao {
     void updateImage(Image image);
 
     @Update
-    void updateImages(ArrayList<Image> second);
+    void insertImages(ArrayList<Image> second);
 }

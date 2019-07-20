@@ -116,7 +116,7 @@ class DownloadFavoritesAdapter extends RecyclerView.Adapter<DownloadFavoritesAda
             remove.setImageDrawable(ContextCompat.getDrawable(remove.getContext(), R.drawable.delete_icon));
             remove.setBackground(ContextCompat.getDrawable(
                     remove.getContext(), R.drawable.rounded_corner_red_background));
-            setListeners(image.first, position);
+            setListeners(image.first, position, image.second);
         }
 
         private void bindFavorite(final Image image, int position) {
@@ -144,16 +144,28 @@ class DownloadFavoritesAdapter extends RecyclerView.Adapter<DownloadFavoritesAda
                 circularProgressDrawable.start();
 
                 Glide.with(imageview.getContext())
+                        .asBitmap()
                         .load(completeUrl)
                         .placeholder(circularProgressDrawable)
                         .apply(options)
 //                        .override(350, 350)
-                        .into(imageview);
+                        .listener(new RequestListener<Bitmap>() {
+                            @Override
+                            public boolean onLoadFailed(@Nullable GlideException e, Object o, Target<Bitmap> target, boolean b) {
+                                return false;
+                            }
+
+                            @Override
+                            public boolean onResourceReady(Bitmap bitmapImage, Object o, Target<Bitmap> target, DataSource dataSource, boolean b) {
+                                setListeners(image, position, bitmapImage);
+                                return false;
+                            }
+                        }).into(imageview);
             }
-            setListeners(image, position);
+
         }
 
-        private void setListeners(Image image, int position) {
+        private void setListeners(Image image, int position, Bitmap bitmap) {
             remove.setOnClickListener(v -> {
                 if (adapterItemClickListener != null) {
                     if (isFavorite) {
@@ -174,36 +186,8 @@ class DownloadFavoritesAdapter extends RecyclerView.Adapter<DownloadFavoritesAda
 
             setAsTextView.setOnClickListener(v -> {
                 if (adapterItemClickListener != null) {
-                    String completeUrl = Utils.getCompleteImageUrl(image.getImageUrl());
-
-                    if (!TextUtils.isEmpty(completeUrl)) {
-                        RequestOptions options = new RequestOptions()
-                                .centerCrop();
-
-                        CircularProgressDrawable circularProgressDrawable = new CircularProgressDrawable(imageview.getContext());
-                        circularProgressDrawable.setStrokeWidth(5f);
-                        circularProgressDrawable.setCenterRadius(30f);
-                        circularProgressDrawable.start();
-
-                        Glide.with(imageview.getContext())
-                                .asBitmap()
-                                .load(completeUrl)
-                                .placeholder(circularProgressDrawable)
-                                .apply(options)
-                                .listener(new RequestListener<Bitmap>() {
-                                    @Override
-                                    public boolean onLoadFailed(@Nullable GlideException e, Object o, Target<Bitmap> target, boolean b) {
-                                        return false;
-                                    }
-
-                                    @Override
-                                    public boolean onResourceReady(Bitmap bitmapImage, Object o, Target<Bitmap> target, DataSource dataSource, boolean b) {
-                                        imageview.setImageBitmap(bitmapImage);
-                                        adapterItemClickListener.onSetAsItemClickListener(bitmapImage);
-                                        return false;
-                                    }
-                                }).submit();
-                    }
+                    imageview.setImageBitmap(bitmap);
+                    adapterItemClickListener.onSetAsItemClickListener(bitmap);
                 }
             });
 

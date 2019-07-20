@@ -2,6 +2,7 @@ package com.example.wallpapersapplication.main;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -12,16 +13,52 @@ import com.example.wallpapersapplication.main.categories.CategoriesFragment;
 import com.example.wallpapersapplication.main.downloadFavorite.DownloadFavoritesFragment;
 import com.example.wallpapersapplication.main.imageList.ImageListFragment;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 
 public class MainActivity extends BaseActivity {
 
     public static final int PERMISSIONS_REQUEST_CODE = 17;
 
+    private MainViewModel model;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        bindModelData();
+        saveImageUrls();
         openFragment(CategoriesFragment.newInstance());
+    }
+
+    private void bindModelData() {
+        model = ViewModelProviders.of(this).get(MainViewModel.class);
+    }
+
+    private void saveImageUrls() {
+        ArrayList<String> categoryTitles = new ArrayList<>(Arrays.asList(
+                getResources().getStringArray(R.array.category_url_start)));
+        model.getImageUrls(categoryTitles).observe(this, imageUrlResponseResource -> {
+            switch (imageUrlResponseResource.status) {
+                case SUCCESS:
+                    if (imageUrlResponseResource.data != null) {
+                        model.getAllImages().observe(this, images -> {
+                            if (images.isEmpty()) {
+                                model.insertImages(imageUrlResponseResource.data);
+                            }
+                        });
+                    }
+                    break;
+                case ERROR:
+                    if (imageUrlResponseResource.message != null) {
+                        showErrorDialog(imageUrlResponseResource.message);
+                    } else {
+                        showErrorDialog();
+                    }
+                    break;
+            }
+        });
     }
 
     public void openFragment(Fragment fragment) {

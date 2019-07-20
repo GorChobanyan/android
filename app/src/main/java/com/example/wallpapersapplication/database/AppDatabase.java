@@ -6,7 +6,6 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import com.example.wallpapersapplication.main.categories.Category;
 import com.example.wallpapersapplication.main.Image;
 
 @Database(entities = {Image.class}, version = 1, exportSchema = false)

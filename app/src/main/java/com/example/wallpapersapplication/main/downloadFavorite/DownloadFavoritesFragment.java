@@ -145,9 +145,7 @@ public class DownloadFavoritesFragment extends Fragment {
 
             @Override
             public void onSetAsItemClickListener(Bitmap bitmap) {
-                ((BaseActivity) getActivity()).showLoadingDialog();
                 Utils.setWallpaper(bitmap, getContext());
-                ((BaseActivity) getActivity()).dismissLoadingDialog();
                 returnPrevPage();
             }
 
